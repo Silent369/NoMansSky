@@ -1,8 +1,8 @@
 local modfilename = "Biomes.CloudsSunFog+LOD-(3.0-Hour)"
 local lua_author  = "Silent"
-local lua_version = "4.1"
+local lua_version = "4.3"
 local mod_author  = "Silent369"
-local nms_version = "5.12"
+local nms_version = "5.20"
 local maintenance = mod_author
 local description = [[
 

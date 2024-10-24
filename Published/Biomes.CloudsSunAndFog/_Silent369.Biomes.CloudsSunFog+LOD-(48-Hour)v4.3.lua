@@ -1,8 +1,8 @@
-local modfilename = "Biomes.CloudsSunFog+LOD-(24-Hour)"
+local modfilename = "Biomes.CloudsSunFog+LOD-(48-Hour)"
 local lua_author  = "Silent"
-local lua_version = "4.1"
+local lua_version = "4.3"
 local mod_author  = "Silent369"
-local nms_version = "5.12"
+local nms_version = "5.20"
 local maintenance = mod_author
 local description = [[
 
@@ -31,7 +31,7 @@ Bloom effects but leaves lensing effects intact.
 --96 Hr = 345600
 --192Hr = 691200
 
-_Day_Length              = 86400 --Original "1800"
+_Day_Length              = 172800 --Original "1800"
 
 --CLOUD ANIM SPEED
 _Anim_Scale              = 30    --Original "50" wtf!
