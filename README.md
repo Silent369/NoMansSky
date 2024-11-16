@@ -1,4 +1,4 @@
-# No Man's Sky Mod Collection
+# No Man's Sky Mod Collection - Updated for 5.27
 
 ### These are the current published and unpublished mods created for No Man's Sky.
 
