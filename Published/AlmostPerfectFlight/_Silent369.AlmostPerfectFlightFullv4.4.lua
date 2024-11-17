@@ -37,12 +37,12 @@ local m_thrstMult = 2
 local m_warpSMult = 4.2
 
 --Handling
-local m_dBreakMin = 1
-local m_dBreakMax = 2
+local m_dBreakMin = 2
+local m_dBreakMax = 3
 local m_rev_break = 2
 local m_lsptrnDmp = 0.1
 local m_min_speed = -1
-local m_overBreak = 0
+local m_overBreak = 0.01
 local m_rolAmount = 2
 local m_rollForce = 1.5
 local m_rollATime = 1
@@ -50,7 +50,7 @@ local m_rudTurnSt = 8
 local m_speedFall = 0
 local m_trnStreng = 2
 local m_turnBrMin = 2
-local m_turnBrMax = 4
+local m_turnBrMax = 3
 
 --Settings
 local m_padTurnSp = 0.75
@@ -374,15 +374,19 @@ NMS_MOD_DEFINITION_CONTAINER =
 
                         {
                             PKW = {"PitchCorrectHeightCurve",},
-                            VCT = {{"Curve", "Squared"},} --"Squared"
+                            VCT = {{"Curve", "SmootherStep"},} --"Squared"
                         },
                         {
                             PKW = {"LandingCurve",},
-                            VCT = {{"Curve", "EaseOutQuad"},} --"SlowOut"
+                            VCT = {{"Curve", "EaseOutQuad"},}  --"SlowOut"
                         },
                         {
                             PKW = {"LandingCurveHeavy",},
                             VCT = {{"Curve", "SmootherStep"},} --"ReallySlowOut"
+                        },
+                        {
+                            PKW = {"LandingCurveWater",},
+                            VCT = {{"Curve", "SmootherStep"},} --"Linear"
                         },
                     }
                 },
