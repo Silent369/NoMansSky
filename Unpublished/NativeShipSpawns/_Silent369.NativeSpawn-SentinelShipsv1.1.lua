@@ -2,7 +2,7 @@ local modfilename = "NativeSpawn-SentinelShips"
 local lua_author  = "Silent"
 local lua_version = "1.1"
 local mod_author  = "Silent369"
-local nms_version = "5.26"
+local nms_version = "5.28"
 local maintenance = mod_author
 local description = [[
 

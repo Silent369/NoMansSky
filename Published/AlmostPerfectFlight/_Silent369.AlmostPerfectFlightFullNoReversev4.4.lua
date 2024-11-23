@@ -2,7 +2,7 @@ local modfilename = "AlmostPerfectFlightFullNoReverse"
 local lua_author  = "Silent"
 local lua_version = "4.4"
 local mod_author  = "Silent369"
-local nms_version = "5.27"
+local nms_version = "5.28"
 local maintenance = mod_author
 local description = [[
 
@@ -18,7 +18,7 @@ With optional settings to make flight much easier (a bit cheaty, hence optional)
 
 local m_cheatySettings = true
 local m_launchFuelCost = true
-local m_controlBonuses = true
+local m_controlBonuses = false
 local m_shipHoverSpeed = true
 local m_shipStatsBonus = true
 local m_warpSpeedMulti = true

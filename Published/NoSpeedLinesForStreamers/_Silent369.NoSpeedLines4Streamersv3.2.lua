@@ -2,7 +2,7 @@ local modfilename = "NoSpeedLines4Streamers"
 local lua_author  = "Silent"
 local lua_version = "3.2"
 local mod_author  = "Silent369"
-local nms_version = "5.27"
+local nms_version = "5.28"
 local maintenance = mod_author
 local description = [[
 

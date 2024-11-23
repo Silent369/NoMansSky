@@ -3,7 +3,7 @@ local lua_author  = "Silent"
 local lua_version = "3.9"
 local mod_author  = "Silent369"
 local contributor = "Spectrus1702"
-local nms_version = "5.27"
+local nms_version = "5.28"
 local maintenance = mod_author
 local description = [[
 

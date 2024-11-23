@@ -2,7 +2,7 @@ local modfilename = "Biomes.MoreNaturalWater"
 local lua_author  = "Silent"
 local lua_version = "1.5"
 local mod_author  = "Silent369"
-local nms_version = "5.26"
+local nms_version = "5.28"
 local maintenance = mod_author
 local description = [[
 
@@ -19,7 +19,6 @@ as implemented by Hello Games.
 --MATERIALS\MESHWATER.MATERIAL.MBIN
 --METADATA\EFFECTS\WATER\WATERDATA.MBIN
 --MODELS\PLANETS\TERRAIN\WATER.MATERIAL.MBIN
-
 --TEXTURES\EFFECTS\WATER\WATERALPHARAMP.DDS
 --TEXTURES\EFFECTS\WATER\WATERCOLOURRAMP.DDS
 --TEXTURES\TERRAIN\WATER\FRESNEL.DDS
@@ -39,12 +38,12 @@ local waterValues = {
     WaveFrequency         = 0.1,   -- 0.01
     WaveChoppiness        = 1,     -- 2
     WaveCutoff            = 0.25,  -- 0.5
-    FresnelPow            = 3,     -- 4
-    FresnelMul            = 0.1,   -- 0.3
-    FresnelAlpha          = 0.9,   -- 0.5
-    FresnelBelowPow       = 3,     -- 4
-    FresnelBelowMul       = 0.1,   -- 0.5
-    FresnelBelowAlpha     = 0.3,   -- 0.5
+    FresnelPow            = 0,     -- 4
+    FresnelMul            = 0,   -- 0.3
+    FresnelAlpha          = 0.7,   -- 0.5
+    FresnelBelowPow       = 0,     -- 4
+    FresnelBelowMul       = 0,   -- 0.5
+    FresnelBelowAlpha     = 0.7,   -- 0.5
 }
 
 local waterAlpha = {
@@ -53,14 +52,14 @@ local waterAlpha = {
 
 local waterDataValues = {
     ColourIndex           = -1,    -- 0
-    WaterStrength         = 0.03,  -- 0.01
+    WaterStrength         = 0.05,  -- 0.01
     WaterColourStrength   = 0.001, -- 0.008
-    WaterMultiplyStrength = 0.1,   -- 0.3
+    WaterMultiplyStrength = 0.5,   -- 0.3
     WaterMultiplyMax      = 0.3,   -- 0.9
     WaterRoughness        = 0.01,  -- 0
-    FresnelPower          = 3,     -- 4
-    FresnelMin            = 1.1,   -- 1.4
-    FresnelMax            = 0.9,   -- 0.7
+    FresnelPower          = 0,     -- 4
+    FresnelMin            = 0,   -- 1.4
+    FresnelMax            = 0,   -- 0.7
 }
 
 local metaWaterValues = {

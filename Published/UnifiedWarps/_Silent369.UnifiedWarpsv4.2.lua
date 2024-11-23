@@ -2,7 +2,7 @@ local modfilename = "UnifiedWarps"
 local lua_author  = "Silent"
 local lua_version = "4.2"
 local mod_author  = "Silent369"
-local nms_version = "5.27"
+local nms_version = "5.28"
 local maintenance = mod_author
 local description = [[
 
@@ -67,7 +67,7 @@ NMS_MOD_DEFINITION_CONTAINER =
             MBIN_CT =
             {
                 {
-                    MBIN_FS = [[MODELS\\EFFECTS\\WARP\\WARPTUNNEL.SCENE.MBIN]],
+                    MBIN_FS = [[MODELS\EFFECTS\WARP\WARPTUNNEL.SCENE.MBIN]],
                     EXML_CT =
                     {
                         {
@@ -140,10 +140,18 @@ NMS_MOD_DEFINITION_CONTAINER =
                                 {"ScaleZ",    "8"}, --Original "1"
                             }
                         },
+
+                        -- Insert New Light Material
+
+                        {
+                            SKW = {"Type", "LIGHT", "Name", "MATERIAL"},
+                            REPLACE_TYPE = "ALL",
+                            VCT = {{"Value", "MATERIALS/LIGHT_WARPTUNNEL.MATERIAL.MBIN"},}
+                        },
                     }
                 },
                 {
-                    MBIN_FS = [[MODELS\\EFFECTS\\WARP\\WARPTUNNEL\\TUNNELMAT1.MATERIAL.MBIN]],
+                    MBIN_FS = [[MODELS\EFFECTS\WARP\WARPTUNNEL\TUNNELMAT1.MATERIAL.MBIN]],
                     EXML_CT =
                     {
                         {
@@ -158,7 +166,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                     }
                 },
                 {
-                    MBIN_FS = [[MODELS\\EFFECTS\\WARP\\WARPTUNNEL\\LIGHTARMSMAT.MATERIAL.MBIN]],
+                    MBIN_FS = [[MODELS\EFFECTS\WARP\WARPTUNNEL\LIGHTARMSMAT.MATERIAL.MBIN]],
                     EXML_CT =
                     {
                         {
@@ -182,7 +190,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                     }
                 },
                 {
-                    MBIN_FS = [[MODELS\\EFFECTS\\WARP\\WARPTUNNEL\\SCROLLINGWAVES2MAT.MATERIAL.MBIN]],
+                    MBIN_FS = [[MODELS\EFFECTS\WARP\WARPTUNNEL\SCROLLINGWAVES2MAT.MATERIAL.MBIN]],
                     EXML_CT =
                     {
                         {
@@ -206,7 +214,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                     }
                 },
                 {
-                    MBIN_FS = [[MODELS\\EFFECTS\\WARP\\WARPTUNNEL\\WARPBGMAT.MATERIAL.MBIN]],
+                    MBIN_FS = [[MODELS\EFFECTS\WARP\WARPTUNNEL\WARPBGMAT.MATERIAL.MBIN]],
                     EXML_CT =
                     {
                         {
@@ -216,31 +224,49 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
                     }
                 },
+
+                -- End Glow Cap Mat
+
                 {
-                    MBIN_FS = [[MODELS\\EFFECTS\\WARP\\WARPTUNNEL\\ENGGLOWCAPMAT.MATERIAL.MBIN]],
+                    MBIN_FS = {
+                      [[MODELS\EFFECTS\WARP\WARPTUNNEL\ENDGLOWMAT.MATERIAL.MBIN]],
+                    },
                     EXML_CT =
                     {
                         {
-                            SKW = {"Class", "Glow"},
-                            VCT = {{"Class", "Opaque"},} --Original "Glow"
-                        },
-                        {
-                            SKW = {"MaterialFlag", "_F34_GLOW"},
-                            REMOVE = "SECTION"
-                        },
-                        {   --warp tunnel glow
-                            SKW = {"Name", "gCustomParams01Vec4"},
+                            SKW = {"Name", "gMaterialColourVec4"},
                             ITF = "FORCE",
                             VCT = {
-                                {"x",   "0"},
-                                {"y",  "80"}, --Original "40"
-                                {"z",   "0"},
-                                {"t", "0.1"}
+                                {"x", "0"},
+                                {"y", "0"},
+                                {"z", "0"},
+                                {"t", "0"}
                             }
                         },
                     }
                 },
-                {   --Create the new Light Material
+                {
+                    MBIN_FS = {
+                      [[MODELS\EFFECTS\WARP\WARPTUNNEL\ENGGLOWCAPMAT.MATERIAL.MBIN]],
+                    },
+                    EXML_CT =
+                    {
+                        {
+                            SKW = {"Name", "gCustomParams01Vec4"},
+                            ITF = "FORCE",
+                            VCT = {
+                                {"x", "0"},
+                                {"y", "0"},
+                                {"z", "0"},
+                                {"t", "0"}
+                            }
+                        },
+                    }
+                },
+
+                --Create the new Light Material
+
+                {
                     MBIN_FS =
                     {
                         {
@@ -251,26 +277,26 @@ NMS_MOD_DEFINITION_CONTAINER =
                     }
                 },
                 {
-                    MBIN_FS = [[MATERIALS\\LIGHT_WARPTUNNEL.MATERIAL.MBIN]],
+                    MBIN_FS = [[MATERIALS\LIGHT_WARPTUNNEL.MATERIAL.MBIN]],
                     EXML_CT =
                     {
+                        {
+                            SKW = {"Name", "Light"},
+                            VCT = {{"Class",  "Translucent"},}
+                        },
                         {
                             SKW = {"Name", "gHSVOverlay"},
                             VCT = {{"Anisotropy",  "0"},}
                         },
-                    }
-                },
-                {
-                    MBIN_FS = [[MODELS\\EFFECTS\\WARP\\WARPTUNNEL.SCENE.MBIN]],
-                    EXML_CT =
-                    {
                         {
-                            SKW = {"Type", "LIGHT", "Name", "MATERIAL"},
-                            REPLACE_TYPE = "ALL",
-                            VCT = {{"Value", "MATERIALS/LIGHT_WARPTUNNEL.MATERIAL.MBIN"},}
+                            SKW	= {"Name", "gLightCookiesMap"},
+                            REMOVE = "SECTION"
                         },
                     }
                 },
+
+                -- Simulation
+
                 {
                     MBIN_FS = [[GCSIMULATIONGLOBALS.GLOBAL.MBIN]],
                     EXML_CT =

@@ -2,7 +2,7 @@ local modfilename = "Biomes.CloudsSunFog+LOD-(9.0-Hour)"
 local lua_author  = "Silent"
 local lua_version = "4.5"
 local mod_author  = "Silent369"
-local nms_version = "5.27"
+local nms_version = "5.28"
 local maintenance = mod_author
 local description = [[
 
@@ -219,6 +219,66 @@ NMS_MOD_DEFINITION_CONTAINER =
         {
             MBIN_CT =
             {
+                {
+                    MBIN_FS = [[PIPELINES\PIPELINEDEFERRED.BIN]],
+                    EXML_CT =
+                    {
+                        {
+                            REPLACE_TYPE = "RAW",
+                            VCT =
+                            {
+                                {[[    <RenderTarget id="CLOUDSHADOWS"       depthBuf="false"        numColBufs="1" format="RED8"   applyDrs="true" scale="0.5" allowDcc="false" />]], [[    <RenderTarget id="CLOUDSHADOWS"       depthBuf="false"        numColBufs="1" format="RED8"   applyDrs="true" scale="1.0" allowDcc="false" />]]},
+                                {[[    <RenderTarget id="CLOUDS_MRT"         depthBuf="false"        numColBufs="2" format0="RGBA16F" format1="R32FG32F" scale="0.5" applyDrs="true" allowDcc="NEXT" shareTarget0="CLOUDS_COLOUR" shareTarget1="CLOUDS_DEPTH" />]], [[    <RenderTarget id="CLOUDS_MRT"         depthBuf="false"        numColBufs="2" format0="RGBA16F" format1="R32FG32F" scale="1.0" applyDrs="true" allowDcc="NEXT" shareTarget0="CLOUDS_COLOUR" shareTarget1="CLOUDS_DEPTH" />]]},
+                                {[[    <RenderTarget id="CLOUDS_COLOUR"      depthBuf="false"        numColBufs="1" format="RGBA16F"   scale="0.5" applyDrs="true" allowDcc="NEXT" />]], [[    <RenderTarget id="CLOUDS_COLOUR"      depthBuf="false"        numColBufs="1" format="RGBA16F"   scale="1.0" applyDrs="true" allowDcc="NEXT" />]]},
+                                {[[    <RenderTarget id="CLOUDS_DEPTH"       depthBuf="false"        numColBufs="1" format="R32FG32F"  scale="0.5" applyDrs="true" allowDcc="NEXT" />]], [[    <RenderTarget id="CLOUDS_DEPTH"       depthBuf="false"        numColBufs="1" format="R32FG32F"  scale="1.0" applyDrs="true" allowDcc="NEXT" />]]},
+                                {[[    <RenderTarget id="CLOUDS_HISTORY"     depthBuf="false"        numColBufs="1" format="RGBA16F"   scale="0.5" applyDrs="true" allowDcc="NEXT" />]], [[    <RenderTarget id="CLOUDS_HISTORY"     depthBuf="false"        numColBufs="1" format="RGBA16F"   scale="1.0" applyDrs="true" allowDcc="NEXT" />]]},
+                                {[[    <RenderTarget id="CLOUDS_FINAL"       depthBuf="false"        numColBufs="1" format="RGBA16F"   scale="0.5" applyDrs="true" allowDcc="NEXT" />]], [[    <RenderTarget id="CLOUDS_FINAL"       depthBuf="false"        numColBufs="1" format="RGBA16F"   scale="1.0" applyDrs="true" allowDcc="NEXT" />]]},
+                            }
+                        },
+                        {
+                            REPLACE_TYPE = "RAW",
+                            VCT	= {
+                                {"<Stage id=\"LensFlare\">", "<Stage id=\"LensFlare\" enabled=\"false\">"},
+                                {"<Stage id=\"LensFlareAnamorphic\">", "<Stage id=\"LensFlareAnamorphic\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomBright\" enabled=\"true\">", "<Stage id=\"NewBloomBright\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomPre\" enabled=\"true\">", "<Stage id=\"NewBloomPre\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomPost\" enabled=\"true\">", "<Stage id=\"NewBloomPost\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomResolve\" enabled=\"true\">", "<Stage id=\"NewBloomResolve\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomExposure\" enabled=\"true\">", "<Stage id=\"NewBloomExposure\" enabled=\"false\">"},
+                                {"<Stage id=\"NoBloom\" enabled=\"false\">", "<Stage id=\"NoBloom\" enabled=\"true\">"}
+                            }
+                        }
+                    }
+                },
+                {
+                    MBIN_FS  = [[PIPELINES\PIPELINEDEFERREDVR.BIN]],
+                    EXML_CT =
+                    {
+                        {
+                            REPLACE_TYPE = "RAW",
+                            VCT =
+                            {
+                                {[[    <RenderTarget id="CLOUDS_MRT"         platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="2" format0="RGBA16F" format1="R32FG32F" scale="0.5"  applyDrs="true" pointSampleColBuf0="false" shareTarget0="CLOUDS_COLOUR" shareTarget1="CLOUDS_DEPTH" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]], [[    <RenderTarget id="CLOUDS_MRT"         platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="2" format0="RGBA16F" format1="R32FG32F" scale="1.0"  applyDrs="true" pointSampleColBuf0="false" shareTarget0="CLOUDS_COLOUR" shareTarget1="CLOUDS_DEPTH" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]]},
+                                {[[    <RenderTarget id="CLOUDS_COLOUR"      platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="RGBA16F"   scale="0.5"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]], [[    <RenderTarget id="CLOUDS_COLOUR"      platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="RGBA16F"   scale="1.0"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]]},
+                                {[[    <RenderTarget id="CLOUDS_DEPTH"       platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="R32FG32F"  scale="0.5"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]], [[    <RenderTarget id="CLOUDS_DEPTH"       platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="R32FG32F"  scale="1.0"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]]},
+                                {[[    <RenderTarget id="CLOUDS_HISTORY"     platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="RGBA16F"   scale="0.5"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]], [[    <RenderTarget id="CLOUDS_HISTORY"     platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="RGBA16F"   scale="1.0"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]]},
+                                {[[    <RenderTarget id="CLOUDS_FINAL"       platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="RGBA16F"   scale="0.5"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]], [[    <RenderTarget id="CLOUDS_FINAL"       platforms="PS5,PC,ORBIS" depthBuf="false"  numColBufs="1" format="RGBA16F"   scale="1.0"   applyDrs="true" allowDcc="NEXT" numUniformBuffers="3" numSlices="2" />]]},
+                                {[[    <RenderTarget id="CLOUDSHADOWS"       depthBuf="false"  numColBufs="1" format="RED8"   scale="0.5"  applyDrs="true" allowDcc="false" numUniformBuffers="3" numSlices="2" />]], [[    <RenderTarget id="CLOUDSHADOWS"       depthBuf="false"  numColBufs="1" format="RED8"   scale="1.0"  applyDrs="true" allowDcc="false" numUniformBuffers="3" numSlices="2" />]]},
+                            }
+                        },
+                        {
+                            REPLACE_TYPE = "RAW",
+                            VCT = {
+                                {"<Stage id=\"LensFlare\">", "<Stage id=\"LensFlare\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomBright\" enabled=\"true\">", "<Stage id=\"NewBloomBright\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloom\" enabled=\"true\">", "<Stage id=\"NewBloom\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomResolve\" enabled=\"true\">", "<Stage id=\"NewBloomResolve\" enabled=\"false\">"},
+                                {"<Stage id=\"NewBloomExposure\" enabled=\"true\">", "<Stage id=\"NewBloomExposure\" enabled=\"false\">"},
+                                {"<Stage id=\"NoBloom\" enabled=\"false\">", "<Stage id=\"NoBloom\" enabled=\"true\">"}
+                            }
+                        }
+                    }
+                },
                 {
                     MBIN_FS = [[GCGRAPHICSGLOBALS.GLOBAL.MBIN]],
                     EXML_CT =
