@@ -1,6 +1,6 @@
-local modfilename = "AlmostPerfectFlightFull"
+local modfilename = "AlmostPerfectFlightLite"
 local lua_author  = "Silent"
-local lua_version = "4.4"
+local lua_version = "4.5"
 local mod_author  = "Silent369"
 local nms_version = "5.28"
 local maintenance = mod_author
@@ -18,7 +18,7 @@ With optional settings to make flight much easier (a bit cheaty, hence optional)
 
 local m_cheatySettings = true
 local m_launchFuelCost = true
-local m_controlBonuses = false
+local m_controlBonuses = true
 local m_shipHoverSpeed = true
 local m_shipStatsBonus = true
 local m_warpSpeedMulti = true
@@ -30,15 +30,15 @@ local m_cheatMult = 50
 local m_cheatTime = 0.1
 
 --Boosts
-local m_boostMult = 2
-local m_boostMxSp = 5
-local m_max_speed = 2
-local m_thrstMult = 2
-local m_warpSMult = 4.2
+local m_boostMult = 1.25
+local m_boostMxSp = 2.5
+local m_max_speed = 1.5
+local m_thrstMult = 1.5
+local m_warpSMult = 2.2
 
 --Handling
-local m_dBreakMin = 2
-local m_dBreakMax = 3
+local m_dBreakMin = 1
+local m_dBreakMax = 1.5
 local m_rev_break = 2
 local m_lsptrnDmp = 0.1
 local m_min_speed = -1
@@ -48,9 +48,11 @@ local m_rollForce = 1.5
 local m_rollATime = 1
 local m_rudTurnSt = 8
 local m_speedFall = 0
-local m_trnStreng = 2
-local m_turnBrMin = 2
-local m_turnBrMax = 3
+local m_trnStreng = 1.25
+local m_turnBrMin = 0.5
+local m_turnBrMax = 1.25
+local m_baltimMin = 0.5
+local m_baltimMax = 1.0
 
 --Settings
 local m_padTurnSp = 0.75
@@ -135,6 +137,8 @@ local function insertEngineData(controlType, engineType)
             {"RollAmount",         m_rolAmount},
             {"RollForce",          m_rollForce},
             {"RollAutoTime",       m_rollATime},
+            {"BalanceTimeMin",     m_baltimMin},
+            {"BalanceTimeMax",     m_baltimMax}
         }
     }
     table.insert(TableData, entry)
@@ -151,48 +155,60 @@ if m_shipStatsBonus then
     end
 end
 
---| Control Bonuses (apply ControlBonusS to all bonus types)
+--| Control Bonuses (apply ControlBonusS to all)
 --|=======================================================================================--
 
+local function insertControlBonus(controlBonus)
+    local entry = {
+        SKW = {controlBonus, "GcPlayerSpaceshipClassBonuses.xml"},
+        SECTION_ACTIVE = {1,},
+        ITF = "FORCE",
+        VCT = {
+            {"ThrustForceMax",       250},
+            {"ThrustForceMin",        50},
+            {"MaxSpeedMax",           30},
+            {"MaxSpeedMin",           15},
+            {"BoostMaxSpeedMax",      15},
+            {"BoostMaxSpeedMin",       5},
+            {"BoostingTurnDampMax",  0.1},
+            {"BoostingTurnDampMin",    0},
+            {"DirectionBrakeMin",    0.2},
+            {"DirectionBrakeMax",   -0.1},
+            {"TurnStrengthMax",     0.25},
+            {"TurnStrengthMin",      0.1},
+        }
+    }
+    table.insert(TableData, entry)
+end
+
+local controlBonuses = {"ControlBonusC", "ControlBonusB", "ControlBonusA"}
+
 if m_controlBonuses then
-    local controlBonuses = {"ControlBonusC", "ControlBonusB", "ControlBonusA"}
     for _, controlBonus in ipairs(controlBonuses) do
-        table.insert(TableData, {
-            SKW = {controlBonus, "GcPlayerSpaceshipClassBonuses.xml"},
-            SECTION_ACTIVE = {1,},
-            --MATH_OP = "*",
-            ITF = "FORCE",
-            VCT = {
-                {"ThrustForceMax",       250},
-                {"ThrustForceMin",        50},
-                {"MaxSpeedMax",           30},
-                {"MaxSpeedMin",           15},
-                {"BoostMaxSpeedMax",      15},
-                {"BoostMaxSpeedMin",       5},
-                {"BoostingTurnDampMax",  0.1},
-                {"BoostingTurnDampMin",    0},
-                {"DirectionBrakeMin",    0.2},
-                {"DirectionBrakeMax",   -0.1},
-                {"TurnStrengthMax",     0.25},
-                {"TurnStrengthMin",      0.1},
-            }
-        })
+        insertControlBonus(controlBonus)
     end
 end
 
 --| Ship Hover
 --|=======================================================================================--
 
-if m_shipHoverSpeed then
-    local controlTypes = {"Control", "ControlLight", "ControlHeavy", "ControlHeavyHover", "ControlHover"}
+local function insertHoverData(controlType)
+    local entry = {
+        SKW = {controlType, "GcPlayerSpaceshipControlData.xml"},
+        REPLACE_TYPE = "ALL",
+        ITF = "FORCE",
+        VCT = {
+          {"MinSpeed", m_min_speed},
+        }
+    }
+    table.insert(TableData, entry)
+end
 
+local controlTypes = {"Control", "ControlLight", "ControlHeavy", "ControlHeavyHover", "ControlHover"}
+
+if m_shipHoverSpeed then
     for _, controlType in ipairs(controlTypes) do
-        table.insert(TableData, {
-            SKW = {controlType, "GcPlayerSpaceshipControlData.xml"},
-            REPLACE_TYPE = "ALL",
-            ITF = "FORCE",
-            VCT = {{"MinSpeed", m_min_speed},}
-        })
+        insertHoverData(controlType)
     end
 end
 
@@ -268,7 +284,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                         {
                             VCT = {
                                 {"MiniWarpHUDArrowAttractAngle",                  "2"}, --Original "10"
-                                {"MiniWarpHUDArrowAttractAngleStation",           "4"}, --Original "5"
+                                {"MiniWarpHUDArrowAttractAngleStation",           "3"}, --Original "5"
                                 {"MiniWarpHUDArrowAttractAngleOtherPlayerStuff",  "1"}, --Original "2"
                                 {"MiniWarpHUDArrowAttractAngleSaveBeacon",        "2"}, --Original "2.5
                                 {"MiniWarpHUDArrowAttractAngleDense",             "3"}, --Original "4"
@@ -311,7 +327,9 @@ NMS_MOD_DEFINITION_CONTAINER =
                                 {"PostWarpSlowDownTime",                        "1.5"}, --Original "3"
                                 {"PulseDriveStationApproachSlowdownRange",     "3500"}, --Original "5000"
                                 {"PulseDriveStationApproachSlowdownRangeMin",   "700"}, --Original "1000"
+                                {"RudderToRollCutoffRotation",                   "90"}, --Original "70"
                                 {"TurnRudderStrength",                    m_rudTurnSt}, --Original "0.4"
+                                {"ShieldLeechMul",                             "0.02"}, --Original "0.07"
                                 {"MaximumDistanceFromShipWhenExiting",            "4"}, --Original "10"
 
                         --|=======================================================================================--
@@ -374,11 +392,11 @@ NMS_MOD_DEFINITION_CONTAINER =
 
                         {
                             PKW = {"PitchCorrectHeightCurve",},
-                            VCT = {{"Curve", "SmootherStep"},} --"Squared"
+                            VCT = {{"Curve", "Squared"},} --"Squared"
                         },
                         {
                             PKW = {"LandingCurve",},
-                            VCT = {{"Curve", "EaseOutQuad"},}  --"SlowOut"
+                            VCT = {{"Curve", "SmootherStep"},}  --"SlowOut"
                         },
                         {
                             PKW = {"LandingCurveHeavy",},
