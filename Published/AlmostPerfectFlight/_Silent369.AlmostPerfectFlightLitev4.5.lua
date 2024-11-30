@@ -106,7 +106,9 @@ if m_warpSpeedMulti then
         MATH_OP = "*",
         REPLACE_TYPE = "ALL",
         ITF = "FORCE",
-        VCT = {{"MiniWarpSpeed", m_warpSMult},} --(30000 x _warpSMult)
+        VCT = {
+            {"MiniWarpSpeed", m_warpSMult}, --(30000 x _warpSMult)
+        }
     })
 end
 
@@ -163,25 +165,42 @@ local function insertControlBonus(controlBonus)
         SKW = {controlBonus, "GcPlayerSpaceshipClassBonuses.xml"},
         SECTION_ACTIVE = {1,},
         ITF = "FORCE",
-        VCT = {
-            {"ThrustForceMax",       250},
-            {"ThrustForceMin",        50},
-            {"MaxSpeedMax",           30},
-            {"MaxSpeedMin",           15},
-            {"BoostMaxSpeedMax",      15},
-            {"BoostMaxSpeedMin",       5},
-            {"BoostingTurnDampMax",  0.1},
-            {"BoostingTurnDampMin",    0},
-            {"DirectionBrakeMin",    0.2},
-            {"DirectionBrakeMax",   -0.1},
-            {"TurnStrengthMax",     0.25},
-            {"TurnStrengthMin",      0.1},
-        }
+        VCT = {} -- Initialise empty table to populate controlBonuses
     }
+
+    if controlBonus == "ControlBonusC" then
+        entry.VCT = {
+            {"ThrustForceMax",        10},
+            {"ThrustForceMin",         0},
+            {"MaxSpeedMax",           10},
+            {"MaxSpeedMin",            5},
+        }
+    elseif controlBonus == "ControlBonusB" then
+        entry.VCT = {
+            {"ThrustForceMax",        20},
+            {"ThrustForceMin",        10},
+            {"MaxSpeedMax",           10},
+            {"MaxSpeedMin",            5},
+        }
+    elseif controlBonus == "ControlBonusA" then
+        entry.VCT = {
+            {"ThrustForceMax",        30},
+            {"ThrustForceMin",        20},
+            {"MaxSpeedMax",           10},
+            {"MaxSpeedMin",            5},
+        }
+    elseif controlBonus == "ControlBonusS" then
+        entry.VCT = {
+            {"ThrustForceMax",        50},
+            {"ThrustForceMin",        40},
+            {"MaxSpeedMax",           10},
+            {"MaxSpeedMin",            5},
+        }
+    end
     table.insert(TableData, entry)
 end
 
-local controlBonuses = {"ControlBonusC", "ControlBonusB", "ControlBonusA"}
+local controlBonuses = {"ControlBonusC", "ControlBonusB", "ControlBonusA", "ControlBonusS"}
 
 if m_controlBonuses then
     for _, controlBonus in ipairs(controlBonuses) do
