@@ -25,18 +25,18 @@ local m_warpSpeedMulti = true
 
 --|=======================================================================================--
 
---Cheaty
+--Cheaty Settings
 local m_cheatMult = 50
 local m_cheatTime = 0.1
 
---Boosts
+--Ship Boosts
 local m_boostMult = 2
 local m_boostMxSp = 5
 local m_max_speed = 2
 local m_thrstMult = 2
 local m_warpSMult = 4.2
 
---Handling
+--Ship Handling
 local m_dBreakMin = 1
 local m_dBreakMax = 1.5
 local m_rev_break = 2
@@ -54,9 +54,30 @@ local m_turnBrMax = 1.25
 local m_baltimMin = 0.5
 local m_baltimMax = 1.0
 
---Settings
+--Control Bonuses
+local m_thrstmaxC = 10
+local m_thrstminC = 0
+local m_mxSpdMaxC = 10
+local m_mxSpdMinC = 5
+
+local m_thrstmaxB = 20
+local m_thrstminB = 10
+local m_mxSpdMaxB = 10
+local m_mxSpdMinB = 5
+
+local m_thrstmaxA = 30
+local m_thrstminA = 20
+local m_mxSpdMaxA = 10
+local m_mxSpdMinA = 5
+
+local m_thrstmaxS = 50
+local m_thrstminS = 40
+local m_mxSpdMaxS = 10
+local m_mxSpdMinS = 5
+
+--Misc Settings
 local m_padTurnSp = 0.75
-local m_fuelMulti = 0.35 --fuel cost saving on launch
+local m_fuelMulti = 0.35 --launch fuel saving
 
 --NoBoost/MiniWarp/Stopping
 local m_Restricts = 0.15 --relax noboost/miniwarp
@@ -165,36 +186,36 @@ local function insertControlBonus(controlBonus)
         SKW = {controlBonus, "GcPlayerSpaceshipClassBonuses.xml"},
         SECTION_ACTIVE = {1,},
         ITF = "FORCE",
-        VCT = {} -- Initialise empty table to populate controlBonuses
+        VCT = {} -- Initialise
     }
 
     if controlBonus == "ControlBonusC" then
         entry.VCT = {
-            {"ThrustForceMax",        10},
-            {"ThrustForceMin",         0},
-            {"MaxSpeedMax",           10},
-            {"MaxSpeedMin",            5},
+            {"ThrustForceMax",  m_thrstmaxC},
+            {"ThrustForceMin",  m_thrstminC},
+            {"MaxSpeedMax",     m_mxSpdMaxC},
+            {"MaxSpeedMin",     m_mxSpdMinC},
         }
     elseif controlBonus == "ControlBonusB" then
         entry.VCT = {
-            {"ThrustForceMax",        20},
-            {"ThrustForceMin",        10},
-            {"MaxSpeedMax",           10},
-            {"MaxSpeedMin",            5},
+            {"ThrustForceMax",  m_thrstmaxB},
+            {"ThrustForceMin",  m_thrstminB},
+            {"MaxSpeedMax",     m_mxSpdMaxB},
+            {"MaxSpeedMin",     m_mxSpdMinB},
         }
     elseif controlBonus == "ControlBonusA" then
         entry.VCT = {
-            {"ThrustForceMax",        30},
-            {"ThrustForceMin",        20},
-            {"MaxSpeedMax",           10},
-            {"MaxSpeedMin",            5},
+            {"ThrustForceMax",  m_thrstmaxA},
+            {"ThrustForceMin",  m_thrstminA},
+            {"MaxSpeedMax",     m_mxSpdMaxA},
+            {"MaxSpeedMin",     m_mxSpdMinA},
         }
     elseif controlBonus == "ControlBonusS" then
         entry.VCT = {
-            {"ThrustForceMax",        50},
-            {"ThrustForceMin",        40},
-            {"MaxSpeedMax",           10},
-            {"MaxSpeedMin",            5},
+            {"ThrustForceMax",  m_thrstmaxS},
+            {"ThrustForceMin",  m_thrstminS},
+            {"MaxSpeedMax",     m_mxSpdMaxS},
+            {"MaxSpeedMin",     m_mxSpdMinS},
         }
     end
     table.insert(TableData, entry)
