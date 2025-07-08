@@ -317,14 +317,14 @@ if m_ShipsCamSettings then
 table.insert(TableData,
     {
         SKW = {
-            {"SpaceshipFollowCam",        "GcCameraFollowSettings", "Name", "SPACESHIP"},
-            {"DropshipFollowCam",         "GcCameraFollowSettings", "Name", "DROPSHIP"},
-            {"ShuttleFollowCam",          "GcCameraFollowSettings", "Name", "SHUTTLE"},
-            {"RoyalShipFollowCam",        "GcCameraFollowSettings", "Name", "ROYAL"},
-            {"SailShipFollowCam",         "GcCameraFollowSettings", "Name", "SAILSHIP"},
-            {"ScienceShipFollowCam",      "GcCameraFollowSettings", "Name", "SCIENCE"},
-            {"AlienShipFollowCam",        "GcCameraFollowSettings", "Name", "ALIENSHIP"},
-            {"RobotShipFollowCam",        "GcCameraFollowSettings", "Name", "ROBOTSHIP"},
+            {"SpaceshipFollowCam",   "GcCameraFollowSettings", "Name", "SPACESHIP"},
+            {"DropshipFollowCam",    "GcCameraFollowSettings", "Name", "DROPSHIP"},
+            {"ShuttleFollowCam",     "GcCameraFollowSettings", "Name", "SHUTTLE"},
+            {"RoyalShipFollowCam",   "GcCameraFollowSettings", "Name", "ROYAL"},
+            {"SailShipFollowCam",    "GcCameraFollowSettings", "Name", "SAILSHIP"},
+            {"ScienceShipFollowCam", "GcCameraFollowSettings", "Name", "SCIENCE"},
+            {"AlienShipFollowCam",   "GcCameraFollowSettings", "Name", "ALIENSHIP"},
+            {"RobotShipFollowCam",   "GcCameraFollowSettings", "Name", "ROBOTSHIP"},
         },
         REPLACE_TYPE = "ALLINSIDESECTION",
         VCT =
