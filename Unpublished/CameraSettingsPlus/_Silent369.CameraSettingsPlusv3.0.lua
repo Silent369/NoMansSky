@@ -401,8 +401,8 @@ NMS_MOD_DEFINITION_CONTAINER =
                                 {"PhotoModeMaxDistance",            "1000000.00000"},
                                 {"PhotoModeMaxDistanceSpace",       "1000000.00000"},
                                 {"PhotoModeCollisionRadius",                    "0"},
-						                    {"PhotoModeVelocitySmoothTime", m_PhotoModeVeloTime}, --0.5
-						                    {"PhotoModeMoveSpeed",          m_PhotoModeMovSpeed}, --11
+                                {"PhotoModeVelocitySmoothTime", m_PhotoModeVeloTime},
+                                {"PhotoModeMoveSpeed",          m_PhotoModeMovSpeed},
                                 {"BuildingModeMaxDistance",         "1000000.00000"},
                                 {"BinocularFlashTime",                          "0"},
                                 {"BinocularFlashStrength",                      "0"},
