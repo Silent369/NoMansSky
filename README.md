@@ -16,6 +16,7 @@
 [Native Sentinel Ships](https://www.nexusmods.com/nomanssky/mods/2841)<br />
 [No Speed Lines 4 Streamers](https://www.nexusmods.com/nomanssky/mods/2343)<br />
 [Slower Sentinel Ship Animations](https://www.nexusmods.com/nomanssky/mods/2764)<br />
+[Spookship - Black Stealth] (https://www.nexusmods.com/nomanssky/mods/3262)<br />
 [Unified Warps](https://www.nexusmods.com/nomanssky/mods/2252)<br />
 
 **Unpublished mods are works in progress and will become published once they
