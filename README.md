@@ -23,3 +23,4 @@
 are considered feature complete.**
 
 Biomes.RobotFaunaSpawns<br />
+CameraSettingsPlus<br />
