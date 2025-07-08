@@ -37,7 +37,7 @@ local m_CameraWanderShip = true
 local m_WarpSettingsFPos = false
 local m_WarpSettingsSPos = false
 local m_CharNoCamAutoCen = true
-local m_ShipNoCamAutoCen = true
+local m_ShipsCamSettings = true
 
 local m_PhotoModeMovSpeed = 12
 local m_PhotoModeVeloTime = 0.4
@@ -313,7 +313,7 @@ end
 
 --| SpaceShip Camera Adjustments
 --|=======================================================================================--
-if m_ShipNoCamAutoCen then
+if m_ShipsCamSettings then
 table.insert(TableData,
     {
         SKW = {
