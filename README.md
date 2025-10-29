@@ -1,4 +1,4 @@
-# No Man's Sky Mod Collection - Updated for 6.04
+# No Man's Sky Mod Collection - Updated for 6.12
 
 ### These are the current published and unpublished mods created for No Man's Sky.
 
