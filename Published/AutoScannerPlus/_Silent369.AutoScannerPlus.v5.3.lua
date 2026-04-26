@@ -37,8 +37,8 @@ function CreateScannableComponentData(ScanRange, ScanName, ScanTime, RangeMult, 
 				<Property name="HideCompassInAlwaysShowRange" value="false" />
 				<Property name="CanTagIcon" value="true" />
 				<Property name="ClearTagOnArrival" value="true" />
-				<Property name="DisableIfBuildingPart" value="true" />
-				<Property name="DisableIfInBase" value="true" />
+				<Property name="DisableIfBuildingPart" value="false" />
+				<Property name="DisableIfInBase" value="false" />
 				<Property name="UseModelNode" value="true" />
 				<Property name="Icon" value="GcScannerIconTypes">
 					<Property name="ScanIconType" value="]]..DisplayIcon..[[" />
