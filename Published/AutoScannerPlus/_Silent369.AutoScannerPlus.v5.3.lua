@@ -3,7 +3,7 @@ local lua_author  = "Silent"
 local lua_version = "5.3"
 local mod_author  = "Silent369"
 local contributor = "Spectrus1702"
-local nms_version = "6.34"
+local nms_version = "6.36"
 local maintenance = mod_author
 local exmlcreate  = true
 local description = [[
@@ -341,7 +341,6 @@ local AddPortalEvent = [[
 		</Property>
 ]]
 
-
 ------------------------------------------------------------------------------------------
 -- When we need to add a physics component.
 ------------------------------------------------------------------------------------------
@@ -465,7 +464,6 @@ NMS_MOD_DEFINITION_CONTAINER =
                         {
                             SKW = {"Name", "MONOLITH"},
                             ADD_OPTION = "ADDafterSECTION",
-                            EXML_FLAGS = "UPDATESECTION",
                             ADD = AddPortalEvent
                         },
                     }
@@ -492,10 +490,11 @@ NMS_MOD_DEFINITION_CONTAINER =
                         {
                             PKW = {"Components"},
                             CREATE_HOS = true,
+                            EXML_FLAGS = "UPDATESECTION",
                             ADD = DistressSound..phys_Physics,
                         },
                         {
-                            SKW = {"Components", "TkPhysicsComponentData"},
+                            SKW = { "Components", "TkPhysicsComponentData" },
                             ADD_OPTION = "ADDafterSECTION",
                             ADD = AddSentinCrash
                         },
@@ -794,7 +793,6 @@ NMS_MOD_DEFINITION_CONTAINER =
                     {
                         {
                             SKW = {"Components", "GcTriggerActionComponentData"},
-                            EXML_FLAGS = "UPDATESECTION",
                             ADD_OPTION = "ADDbeforeSECTION",
                             ADD = AddPortal,
                         },
