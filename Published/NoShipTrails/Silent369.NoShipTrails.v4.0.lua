@@ -1,6 +1,6 @@
 local modfilename = "NoShipTrails"
 local lua_author  = "Silent"
-local lua_version = "4.1"
+local lua_version = "4.0"
 local mod_author  = "Silent369"
 local nms_version = "6.45.1"
 local maintenance = mod_author
